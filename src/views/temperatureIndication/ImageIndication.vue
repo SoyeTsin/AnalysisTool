@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import base64Data from '../assets/temper_file/base64'
-import jsonData from '../assets/temper_file/temper.json'
+import base64Data from '../../assets/temper_file/base64'
+import jsonData from '../../assets/temper_file/temper.json'
 
 export default {
   name: 'HelloWorld',
@@ -59,6 +59,7 @@ export default {
     },
     drawRect(e) {
       if (this.flag) {
+        this.context.fillStyle = '#ff0000';// 以纯色绿色填充
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         // this.loadImage()
         this.context.beginPath();

@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, protocol, BrowserWindow, Menu } from 'electron'
+import { app, protocol, BrowserWindow, Menu, ipcMain } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
@@ -14,15 +14,16 @@ Menu.setApplicationMenu(null) // 取消菜单栏
 async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 640,
-    height: 512,
+    width: 1024,
+    height: 768,
     webPreferences: {
 
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
-      nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
+      nodeIntegration: true, // process.env.ELECTRON_NODE_INTEGRATION,
       contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION
-    }
+    },
+    frame: false
   })
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
@@ -34,6 +35,33 @@ async function createWindow() {
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
   }
+
+  // 接收最小化命令
+  ipcMain.on('windowMin', () => {
+    win.minimize();
+  })
+// 接收最大化命令
+  ipcMain.on('windowMax', () => {
+    if (win.isMaximized()) {
+      win.restore();
+    } else {
+      win.maximize();
+    }
+  })
+// 接收关闭命令
+  ipcMain.on('windowClose', () => {
+    console.log('-->windowClose')
+    app.quit()
+  })
+
+  // 主进程中监听窗口的最大化操作，然后发送命令给渲染进程
+  win.on('maximize', () => {
+    win.webContents.send('mainWindowMax');
+  })
+
+  win.on('unmaximize', () => {
+    win.webContents.send('mainWindowUnmax');
+  })
 }
 
 // Quit when all windows are closed.

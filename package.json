@@ -1,5 +1,5 @@
 {
-  "name": "electron_vue",
+  "name": "AnalysisTool",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -14,9 +14,13 @@
   "main": "background.js",
   "dependencies": {
     "core-js": "^3.6.5",
+    "css-loader": "^5.2.6",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-i18n": "^8.24.4",
+    "vue-router": "^3.5.1",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
