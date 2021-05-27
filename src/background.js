@@ -23,7 +23,8 @@ async function createWindow() {
       nodeIntegration: true, // process.env.ELECTRON_NODE_INTEGRATION,
       contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION
     },
-    frame: false
+    frame: false,
+    show: false
   })
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
@@ -61,6 +62,10 @@ async function createWindow() {
 
   win.on('unmaximize', () => {
     win.webContents.send('mainWindowUnmax');
+  })
+
+  win.on('ready-to-show', function() {
+    win.show() // 初始化后再显示
   })
 }
 
