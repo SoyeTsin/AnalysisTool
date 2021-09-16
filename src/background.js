@@ -14,8 +14,8 @@ Menu.setApplicationMenu(null) // 取消菜单栏
 async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 1024,
-    height: 768,
+    width: 1200,
+    height: 720,
     webPreferences: {
 
       // Use pluginOptions.nodeIntegration, leave this alone

@@ -1,7 +1,10 @@
 <template>
   <div class="top">
-    <div class="left">TITLE</div>
-    <div class="right">
+    <div class="top-left">
+      <img class="logo" src="../assets/logo.png">
+      <div class="text">TITLE TITLE TITLE</div>
+    </div>
+    <div class="top-right">
       <div @click.stop="windowMin">
         <span class="icon iconfont">&#xe60c;</span>
       </div>
@@ -27,7 +30,7 @@ export default {
   mounted() {
     // 监听窗口的最大化操作
     this.$electron.ipcRenderer.on('mainWindowMax', (event) => {
-     this.ifMax = true
+      this.ifMax = true
     });
     this.$electron.ipcRenderer.on('mainWindowUnmax', (event) => {
       this.ifMax = false
@@ -56,19 +59,46 @@ export default {
 .top {
   -webkit-app-region: drag;
   -webkit-user-select: none;
-  height: 36px;
-  background-image: linear-gradient(to top, rgb(56, 56, 56), rgb(110, 110, 110));
+  height: 40px;
+  background-color: #FFFFFF;
   width: 100%;
   border-bottom: solid 1px rgb(137, 137, 137);
   line-height: 36px;
   color: white;
   text-indent: 12px;
   font-size: 14px;
-
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
-  .right {
+  .top-left {
+    height: 24px;
+    font-size: 16px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.85);
+    line-height: 24px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 12px;
+
+    .logo {
+      height: 24px;
+      width: 24px;
+    }
+
+    .text {
+      height: 24px;
+      font-size: 16px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.85);
+      line-height: 24px;
+    }
+  }
+
+  .top-right {
     -webkit-app-region: no-drag;
     display: flex;
     justify-content: flex-end;
@@ -79,6 +109,7 @@ export default {
       line-height: 35px;
       height: 35px;
       text-indent: 0;
+      color: #000000;
     }
 
     > div:active, > div:hover {

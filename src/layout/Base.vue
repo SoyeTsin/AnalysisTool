@@ -1,12 +1,16 @@
 <template>
   <div class="base">
     <top-menu class="top" />
-    <div class="content">
+    <div class="content-box">
       <left-menu />
-      <router-view class="router-content" />
-      <right-menu />
+      <div class="right-content">
+        <div class="center-box">
+          <router-view class="router-content" />
+          <right-menu />
+        </div>
+        <foot class="foot" />
+      </div>
     </div>
-    <foot class="foot" />
   </div>
 </template>
 <script>
@@ -38,20 +42,34 @@ export default {
     height: 36px;
   }
 
-  .content {
+  .content-box {
     height: 100%;
     flex: 1;
+    background-color: #FFFFFF;
     display: flex;
-    background-color: rgb(23, 23, 23);
+    justify-content: flex-start;
 
-    .router-content {
-      flex: 1;
+    .right-content {
+      width: 100%;
       height: 100%;
       display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+      justify-content: flex-start;
+      flex-direction: column;
 
+      .center-box {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+
+        .router-content {
+          flex: 1;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
   }
 
   .foot {

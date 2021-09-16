@@ -10,13 +10,12 @@ export default {
 
 <style scoped lang="less">
 .foot{
-  height: 36px;
-  background-image: linear-gradient(to top , rgb(56,56,56), rgb(110,110,110));
+  height: 32px;
   width: 100%;
   border-top: solid 1px rgb(137, 137, 137);
-  line-height: 36px;
-  color: white;
-  text-indent: 12px;
+  line-height: 32px;
   font-size: 14px;
+  text-align: center;
+  background-color: #FFFFFF;
 }
 </style>
