@@ -1,4 +1,4 @@
-import message from "@/i18n/zh/message";
+import fileLibrary from "@/i18n/zh/fileLibrary";
 
-const en = { ...message }
+const en = { fileLibrary }
 export default en

@@ -3,6 +3,11 @@
 </template>
 
 <script>
+/**
+ * @author Soye
+ * @date 2021/9/16
+ * @Description: 底部信息栏
+*/
 export default {
   name: "Foot"
 }

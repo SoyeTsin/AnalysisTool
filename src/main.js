@@ -14,22 +14,23 @@ Vue.use(VueI18n)
 Vue.config.productionTip = false
 
 let locale = localStorage.getItem('language')
+
 if (!locale) {
-  locale = 'en'
-  localStorage.setItem('language', locale);
+    locale = 'zh'
+    localStorage.setItem('language', locale);
 }
 const i18n = new VueI18n({
-  locale: locale,
-  messages: {
-    zh,
-    en
-  },
-  silentTranslationWarn: true
+    locale: locale,
+    messages: {
+        zh,
+        en
+    },
+    silentTranslationWarn: true
 });
 
 new Vue({
-  router,
-  store,
-  i18n,
-  render: h => h(App)
+    router,
+    store,
+    i18n,
+    render: h => h(App)
 }).$mount('#app')

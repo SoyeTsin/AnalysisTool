@@ -4,9 +4,8 @@
     <div class="content-box">
       <left-menu />
       <div class="right-content">
-        <div class="center-box">
-          <router-view class="router-content" />
-          <right-menu />
+        <div class="main-content">
+          <DocumentOverview />
         </div>
         <foot class="foot" />
       </div>
@@ -17,12 +16,12 @@
 
 import TopMenu from "@/layout/TopMenu";
 import LeftMenu from "@/layout/LeftMenu";
-import RightMenu from "@/layout/RightMenu";
 import Foot from "@/layout/Foot";
+import DocumentOverview from "@/components/DocumentOverview/DocumentOverview"
 
 export default {
   name: "Base",
-  components: { Foot, RightMenu, LeftMenu, TopMenu },
+  components: { Foot, LeftMenu, TopMenu, DocumentOverview },
   data() {
     return {};
   },
@@ -56,18 +55,10 @@ export default {
       justify-content: flex-start;
       flex-direction: column;
 
-      .center-box {
-        flex: 1;
+      .main-content {
         display: flex;
-        justify-content: flex-start;
-
-        .router-content {
-          flex: 1;
-          height: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
+        justify-content: space-between;
+        flex: 1;
       }
     }
   }

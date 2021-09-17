@@ -1,13 +1,11 @@
 <template>
-  <Base />
+  <router-view class="router-content" />
 </template>
 
 <script>
-import Base from "@/layout/Base";
 
 export default {
   name: "Index",
-  components: { Base },
   data() {
     return {
 

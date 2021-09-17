@@ -20,6 +20,11 @@
 </template>
 
 <script>
+/**
+ * @author Soye
+ * @date 2021/9/16
+ * @Description: 顶部标题栏
+ */
 export default {
   name: "TopMenu",
   data() {
@@ -56,13 +61,14 @@ export default {
 </script>
 
 <style scoped lang="less">
+@import "../style/index";
 .top {
   -webkit-app-region: drag;
   -webkit-user-select: none;
   height: 40px;
   background-color: #FFFFFF;
   width: 100%;
-  border-bottom: solid 1px rgb(137, 137, 137);
+  border-bottom: solid 1px @borderColor;
   line-height: 36px;
   color: white;
   text-indent: 12px;
@@ -113,7 +119,7 @@ export default {
     }
 
     > div:active, > div:hover {
-      background-color: rgb(50, 50, 50);
+      background-color: #e5e5e5;
     }
   }
 }

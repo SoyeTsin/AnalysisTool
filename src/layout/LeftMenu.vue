@@ -18,6 +18,11 @@
 </template>
 
 <script>
+/**
+ * @author Soye
+ * @date 2021/9/16
+ * @Description: 左侧菜单栏
+*/
 export default {
   name: "LeftMenu",
   data() {
