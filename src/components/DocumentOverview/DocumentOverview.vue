@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="column-right" :style="{height: viewHeight+'px'}">
-      右侧的内容，右侧的内容，右侧的内容，右侧的内容
+      <RightFileView />
     </div>
   </div>
 </template>
@@ -20,11 +20,12 @@
  * @Description: 文件库
  */
 import LeftMenuBar from "@/components/DocumentOverview/LeftMenuBar";
+import RightFileView from "@/components/DocumentOverview/RightFileView";
 
 export default {
   name: "DocumentOverview",
   components: {
-    LeftMenuBar
+    LeftMenuBar, RightFileView
   }, data() {
     return {
       viewHeight: 0 // 100

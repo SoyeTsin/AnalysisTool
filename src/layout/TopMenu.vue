@@ -2,18 +2,18 @@
   <div class="top">
     <div class="top-left">
       <img class="logo" src="../assets/logo.png">
-      <div class="text">TITLE TITLE TITLE</div>
+      <div class="text">DJI Thermal AnalysisTool</div>
     </div>
     <div class="top-right">
       <div @click.stop="windowMin">
-        <span class="icon iconfont">&#xe60c;</span>
+        <svg-icon icon-class="icon_minimize" />
       </div>
       <div @click.stop="windowMax">
-        <span v-if="!ifMax" class="icon iconfont">&#xe665;</span>
-        <span v-if="ifMax" class="icon iconfont">&#xe608;</span>
+        <svg-icon v-if="!ifMax" icon-class="icon_maximize" />
+        <svg-icon v-else icon-class="icon_narrow" />
       </div>
       <div @click.stop="windowClose">
-        <span class="icon iconfont">&#xe62b;</span>
+        <svg-icon icon-class="icon_close" />
       </div>
     </div>
   </div>
@@ -62,6 +62,7 @@ export default {
 
 <style scoped lang="less">
 @import "../style/index";
+
 .top {
   -webkit-app-region: drag;
   -webkit-user-select: none;

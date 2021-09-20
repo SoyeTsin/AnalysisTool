@@ -6,10 +6,14 @@ import VueI18n from 'vue-i18n'
 import zh from "@/i18n/zh";
 import en from "@/i18n/en";
 import "@/assets/icon/iconfont.css"
+import '@/icons'
+import isElectron from "is-electron";
 
-const { ipcRenderer } = window.require('electron');
+if (isElectron()) {
+    const { ipcRenderer } = window.require('electron');
+    Vue.prototype.$electron = { ipcRenderer }
+}
 Vue.prototype.$EventBus = new Vue();
-Vue.prototype.$electron = { ipcRenderer }
 Vue.use(VueI18n)
 Vue.config.productionTip = false
 

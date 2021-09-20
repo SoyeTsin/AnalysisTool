@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>icon_down</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="10 0 5 6 0 0"></polygon>
+    </defs>
+    <g id="home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="测温图元拖拽A4全屏" transform="translate(-193.000000, -85.000000)">
+            <g id="编组-3" transform="translate(136.000000, 83.000000)">
+                <g id="icon16/下拉备份-4" transform="translate(57.000000, 2.000000)">
+                    <g id="icon_down">
+                        <rect id="矩形" fill="#D8D8D8" opacity="0" x="0" y="0" width="16" height="16"></rect>
+                        <g id="编组" transform="translate(3.000000, 5.000000)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <g id="Clip-1689"></g>
+                            <polygon id="Fill-1688" fill="#FFFFFF" mask="url(#mask-2)" points="-5 11 15 11 15 -5 -5 -5"></polygon>
+                            <polygon id="Fill-1690" fill="#5F5F5F" mask="url(#mask-2)" points="-33 45 45 45 45 -33 -33 -33"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

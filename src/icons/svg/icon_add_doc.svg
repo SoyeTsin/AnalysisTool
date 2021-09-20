@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>icon_add doc</title>
+    <desc>Created with Sketch.</desc>
+    <g id="home" stroke="none" stroke-width="1" fill="" fill-rule="evenodd">
+        <g id="库_放大" transform="translate(-72.000000, -53.000000)">
+            <g id="工具栏" transform="translate(72.000000, 51.000000)">
+                <g id="工具栏/添加文件">
+                    <g id="icon16/add-doc" transform="translate(0.000000, 2.000000)">
+                        <g id="icon_add-doc">
+                            <rect id="矩形" fill="#595959" opacity="0" x="0" y="0" width="16" height="16"></rect>
+                            <g id="编组" transform="translate(2.003550, 3.004200)"  fill="none">
+                                <rect id="矩形"  fill="#595959" x="3.99645" y="5.9958" width="4" height="1"
+                                      rx="0.5"></rect>
+                                <rect id="矩形" fill="#595959"
+                                      transform="translate(5.996450, 6.495800) rotate(-270.000000) translate(-5.996450, -6.495800) "
+                                      x="3.99645" y="5.9958" width="4" height="1" rx="0.5"></rect>
+                                <path d="M4.5,0.5 L0.8,0.5 L0.8,10.5 L11.44345,10.5 L11.4299525,2.86876848 L10.0312041,2 L7,2 C7,1 6,1 5.5,0.6 C5,0.595108994 6,0.5 5,0.5 Z"
+                                      id="路径" stroke="#595959" fill-rule="nonzero"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

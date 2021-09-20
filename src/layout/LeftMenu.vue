@@ -2,15 +2,15 @@
   <div class="left">
     <div class="left-top">
       <div v-for="(item,index) in menuArray" :key="index">
-        <div :class="(item.active?'active':'')+' menu'" :title="item.name">
-          <i :class="' icon iconfont left-icon '+item.icon" />
+        <div :class="(item.active?'active':'')+' menu'" :title="$t(item.name)">
+          <svg-icon :icon-class="item.icon" />
         </div>
       </div>
     </div>
     <div class="left-bottom">
-      <div v-for="(item,index) in menuArray" :key="index">
-        <div :class="(item.active?'active':'')+' menu'" :title="item.name">
-          <i :class="' icon iconfont left-icon '+item.icon" />
+      <div v-for="(item,index) in menuBottomArray" :key="index">
+        <div :class="(item.active?'active':'')+' menu'" :title="$t(item.name)">
+          <svg-icon :icon-class="item.icon" />
         </div>
       </div>
     </div>
@@ -22,27 +22,38 @@
  * @author Soye
  * @date 2021/9/16
  * @Description: 左侧菜单栏
-*/
+ */
 export default {
   name: "LeftMenu",
   data() {
     return {
       menuArray: [
         {
-          name: 'Pan',
-          icon: 'icon-huabi',
-          active: false
-        }, {
-          name: 'Target',
-          icon: 'icon-aim',
-          active: false
-        }, {
-          name: 'Square',
-          icon: 'icon-zhifangkuang',
+          name: 'fileLibrary.LeftMenu.library',
+          icon: 'icon_Library',
           active: true
         }, {
-          name: 'Oval',
-          icon: 'icon-tuoyuan',
+          name: 'fileLibrary.LeftMenu.report',
+          icon: 'icon_report2',
+          active: false
+        }, {
+          name: 'fileLibrary.LeftMenu.stencil',
+          icon: 'icon_stencil',
+          active: false
+        }, {
+          name: 'fileLibrary.LeftMenu.oval',
+          icon: 'icon_full_screen',
+          active: false
+        }
+      ],
+      menuBottomArray: [
+        {
+          name: 'fileLibrary.LeftMenu.options',
+          icon: 'icon_options',
+          active: false
+        }, {
+          name: 'fileLibrary.LeftMenu.help',
+          icon: 'icon_help',
           active: false
         }
       ]
@@ -60,12 +71,15 @@ export default {
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
-
-  .left-top,.left-bottom {
+  /deep/ .svg-icon{
+    color: black;
+  }
+  .left-top, .left-bottom {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
+
     .menu {
       cursor: pointer;
       width: 32px;
@@ -79,7 +93,9 @@ export default {
     }
 
     .menu:hover {
-      background-color: rgba(31, 163, 246, 0.5);
+      .svg-icon{
+        opacity: 1;
+      }
     }
 
     .left-icon {
@@ -88,12 +104,21 @@ export default {
 
     .menu.active {
       background-color: #1FA3F6;
+      .svg-icon{
+        opacity: 1;
+      }
     }
   }
-  .left-bottom{
-    .menu{
+
+  .left-bottom {
+    .menu {
       margin-bottom: 12px;
     }
+  }
+
+  .svg-icon {
+    font-size: 24px;
+    opacity: 0.65;
   }
 }
 </style>

@@ -2,18 +2,20 @@
   <div class="menu-bar">
     <div class="top">
       <div class="item">
-        <img src="../../assets/logo.png">
+        <svg-icon icon-class="icon_add_doc" />
         <div class="text">{{ $t('fileLibrary.leftMenuBar.top.addFile') }}</div>
       </div>
       <div class="item">
-        <img src="../../assets/logo.png">
+        <svg-icon icon-class="icon_Import" />
         <div class="text">{{ $t('fileLibrary.leftMenuBar.top.importFile') }}</div>
       </div>
     </div>
     <div class="content-view">
       <div class="item my-file-view">
         <div class="title">{{ $t('fileLibrary.leftMenuBar.contentView.myFiles') }}</div>
-        <div class="tree">2</div>
+        <div class="tree">
+          <FileDialog />
+        </div>
       </div>
       <div class="item date-view">
         <div class="title">{{ $t('fileLibrary.leftMenuBar.contentView.dateFiles') }}</div>
@@ -28,8 +30,12 @@
 </template>
 
 <script>
+import FileDialog from './FileDialog'
 export default {
-  name: "MenuBar"
+  name: "MenuBar",
+  components: {
+    FileDialog
+  }
 }
 </script>
 
@@ -43,7 +49,7 @@ export default {
   border-bottom: solid 1px @borderColor;
 
   .content-view {
-    padding:  8px 11px 8px 16px;
+    padding: 8px 11px 8px 16px;
 
     > div .title {
       font-family: PingFangSC-Medium;
@@ -53,9 +59,9 @@ export default {
     }
 
     .item {
-     .tree{
-       padding: 8px 0;
-     }
+      .tree {
+        padding: 8px 0;
+      }
     }
 
     .my-file-view {
@@ -79,11 +85,29 @@ export default {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    padding: 12px 16px;
 
     .item {
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      margin-right: 12px;
+      border-radius: 2px;
+
+      &:hover {
+        .text {
+          color: #1FA3F6;
+        }
+
+        /deep/ .svg-icon {
+          color: #1FA3F6;
+        }
+      }
+
+      /deep/ .svg-icon {
+        font-size: 16px;
+        color: #1FA3F6;
+      }
 
       img {
         height: 16px;
@@ -97,7 +121,7 @@ export default {
         font-size: 14px;
         font-family: PingFangSC-Regular, PingFang SC;
         font-weight: 400;
-        color: #000000;
+        color: #595959;
       }
     }
   }

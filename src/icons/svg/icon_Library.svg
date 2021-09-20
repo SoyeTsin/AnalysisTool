@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>icon_Library</title>
+    <desc>Created with Sketch.</desc>
+    <g id="home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="1">
+        <g id="测温图元拖拽A4全屏" transform="translate(-16.000000, -57.000000)">
+            <g id="左侧菜单" transform="translate(0.000000, 41.000000)">
+                <g id="编组-2">
+                    <g id="编组-3" transform="translate(12.000000, 12.000000)">
+                        <g id="-menu">
+                            <g id="-menu/active">
+                                <g id="icon24/帮助备份-4" transform="translate(4.000000, 4.000000)">
+                                    <g id="icon_Library">
+                                        <rect id="矩形" fill="#ffffff" opacity="0" x="0" y="0" width="24"
+                                              height="24"></rect>
+                                        <g id="编组-5" transform="translate(3.000000, 2.000000)" fill="#ffffff">
+                                            <polygon id="路径"
+                                                     points="1.15907284e-13 5.23826087 8.12245109 9.83086957 8.1228913 19.4182609 0.000880434783 14.7595652"></polygon>
+                                            <polygon id="路径"
+                                                     points="17.2349511 5.23826087 17.2353913 14.7713043 9.1125 19.416087 9.11205978 9.83086957"></polygon>
+                                            <polygon id="路径"
+                                                     points="8.61989674 1.97372982e-15 16.5015489 4.43521739 8.61769565 8.89304348 0.733402174 4.43478261"></polygon>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

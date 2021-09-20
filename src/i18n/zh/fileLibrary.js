@@ -9,6 +9,14 @@ const fileLibrary = {
             dateFiles: '日期',
             searchView: '搜索视图'
         }
+    },
+    LeftMenu: {
+        library: '文件库',
+        report: '报告',
+        stencil: '模板',
+        oval: '放大',
+        options: '设置',
+        help: '帮助'
     }
 }
 

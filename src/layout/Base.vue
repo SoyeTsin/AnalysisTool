@@ -1,6 +1,6 @@
 <template>
   <div class="base">
-    <top-menu class="top" />
+    <top-menu v-if="ifElectron" class="top" />
     <div class="content-box">
       <left-menu />
       <div class="right-content">
@@ -18,12 +18,18 @@ import TopMenu from "@/layout/TopMenu";
 import LeftMenu from "@/layout/LeftMenu";
 import Foot from "@/layout/Foot";
 import DocumentOverview from "@/components/DocumentOverview/DocumentOverview"
+import isElectron from "is-electron";
 
 export default {
   name: "Base",
   components: { Foot, LeftMenu, TopMenu, DocumentOverview },
   data() {
     return {};
+  },
+  computed: {
+    ifElectron() {
+      return isElectron()
+    }
   },
   mounted() {
   },
