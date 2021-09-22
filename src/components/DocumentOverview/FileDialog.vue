@@ -20,7 +20,7 @@
 <script>
 import isElectron from "is-electron";
 
-const { dialog } = require('electron').remote;
+const { dialog } = require('@electron/remote');
 const fs = require('fs')
 const path = require('path')
 

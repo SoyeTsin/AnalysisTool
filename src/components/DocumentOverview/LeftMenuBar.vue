@@ -14,7 +14,7 @@
       <div class="item my-file-view">
         <div class="title">{{ $t('fileLibrary.leftMenuBar.contentView.myFiles') }}</div>
         <div class="tree">
-          <FileDialog />
+          <!--          <FileDialog />-->
         </div>
       </div>
       <div class="item date-view">
@@ -30,11 +30,11 @@
 </template>
 
 <script>
-import FileDialog from './FileDialog'
+// import FileDialog from './FileDialog'
 export default {
   name: "MenuBar",
   components: {
-    FileDialog
+    // FileDialog
   }
 }
 </script>
