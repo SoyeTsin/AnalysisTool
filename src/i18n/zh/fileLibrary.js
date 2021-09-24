@@ -17,6 +17,9 @@ const fileLibrary = {
         oval: '放大',
         options: '设置',
         help: '帮助'
+    },
+    RightFileView: {
+        nape: "项"
     }
 }
 

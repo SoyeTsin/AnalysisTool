@@ -1,83 +1,139 @@
 <template>
   <div class="container">
-    <div class="selecter">
-      {{ dictorySelected }}
-      <button placeholder="请选择目录" :disabled="true" type="button">
-
-        <button type="primary" @click="showFileDialog()">选择目录</button>
-      </button>
-    </div>
-    <div class="datatable">
-      <div>共有 {{ tableData.length }} 条记录</div>
-      <!--      <table v-loading="isLoading" element-loading-text="拼命加载中" :data="tableData" style="width: 100%">-->
-      <!--        <el-table-column prop="filename" label="文件名" />-->
-      <!--        <el-table-column prop="filesize" label="文件大小" fixed="right" width="100" />-->
-      <!--      </table>-->
-    </div>
+    <TreeComp :tree-data="fileObject" />
   </div>
 </template>
 
 <script>
-import isElectron from "is-electron";
+// 在应用中加载node模块
+const fs = require('fs');
+const osenv = require('osenv');
 
-const { dialog } = require('@electron/remote');
-const fs = require('fs')
-const path = require('path')
+// 引入 aysnc模块
+const async = require('async');
+// 引入path模块
+const path = require('path');
+
+import TreeComp from "@/components/DocumentOverview/TreeComp";
 
 export default {
   name: 'FileListingPage',
+  components: { TreeComp },
   data() {
     return {
-      dictorySelected: '',
-      isLoading: false,
-      tableData: []
+      fileList: []
     }
   },
+  computed: {
+    fileObject() {
+      return this.$store.state.fileObject
+    }
+  },
+  mounted() {
+    this.main()
+  },
   methods: {
-    showFileDialog() {
-      if (isElectron()) {
-        dialog.showOpenDialog({ properties: ['openDirectory'] }, (filename) => {
-          if (filename.length === 1) {
-            this.dictorySelected = filename[0]
-            this.listingFile(this.dictorySelected)
-          }
-        })
-      }
+    filterFile(files = []) {
+      files.forEach((item, index) => {
+        if (item.type === 'directory') {
+          this.fileList.push({ ...item, id: `0-${index}` })
+        }
+      })
+      this.$store.commit('changeFileObject', { file: this.getUsersHomeFolder(), children: this.fileList, id: '0' })
     },
-    listingFile(filepath) {
-      this.isLoading = true
-      if (isElectron()) {
-        fs.readdir(filepath, (err, file) => {
-          if (err) {
-            this.isLoading = false
-            return alert(err)
-          }
-          this.tableData = []
-          for (const filename of file) {
-            const stat = fs.statSync(path.join(filepath, filename))
-            if (stat.isFile()) {
-              if (path.extname(filename).toLowerCase() === '.md') {
-                this.tableData.push({
-                  filename: filename,
-                  filesize: stat.size
-                })
-              }
-            }
-          }
-          this.isLoading = false
-        })
+    displayFiles(err, files) {
+      if (err) {
+        return alert('sorry, we could not display your files');
       }
+      this.filterFile(files)
+    },
+    main() {
+      // 该函数的作用是：获取到用户个人文件夹的路径，并获取到该文件夹下的文件列表信息
+      const folderPath = `${this.getUsersHomeFolder()}\\Documents`
+      this.getFilesInFolder(folderPath, (err, files) => {
+        if (err) {
+          console.log('对不起，您没有加载您的home folder');
+        }
+        console.log(files);
+
+        // files.forEach((file) => {
+        //   console.log(`${folderPath}/${file}`);
+        // });
+
+        this.inspectAndDescribeFiles(folderPath, files, this.displayFiles);
+      });
+    },
+    getUsersHomeFolder() {
+      return osenv.home();
+    },
+    getFilesInFolder(folderPath, cb) {
+      // 使用 fs.readdir 来获取文件列表
+      fs.readdir(folderPath, cb);
+    },
+    inspectAndDescribeFiles(folderPath, files, cb) {
+      // 使用 async 模块调用异步函数并收集结果
+      async.map(files, (file, asyncCB) => {
+        const resolveFilePath = path.resolve(folderPath, file);
+        this.inspectAndDescribeFile(resolveFilePath, asyncCB);
+      }, cb);
+    },
+    inspectAndDescribeFile(filePath, cb) {
+      const result = {
+        file: path.basename(filePath),
+        path: filePath,
+        type: ''
+      };
+      fs.stat(filePath, (err, stat) => {
+        if (err) {
+          cb(err);
+        } else {
+          if (stat.isFile()) { // 判断是否是文件
+            result.type = 'file';
+          }
+          if (stat.isDirectory()) { // 判断是否是目录
+            result.type = 'directory';
+          }
+          cb(err, result);
+        }
+      });
     }
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .container {
-  padding: 10px;
+  .main-area {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 22px;
+    padding: 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 2px;
+    box-sizing: border-box;
+    border: solid 1px #ffffff;
+
+    &.active {
+      border: dotted 1px #1fa3f6;
+      height: 22px;
+    }
+
+    .text {
+      font-family: PingFangSC-Regular;
+      font-size: 14px;
+      color: #595959;
+      line-height: 22px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
 }
 
-.datatable {
-  margin-top: 10px;
-}
 </style>

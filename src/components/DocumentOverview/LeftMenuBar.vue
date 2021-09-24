@@ -14,27 +14,36 @@
       <div class="item my-file-view">
         <div class="title">{{ $t('fileLibrary.leftMenuBar.contentView.myFiles') }}</div>
         <div class="tree">
-          <!--          <FileDialog />-->
+          <FileDialog />
         </div>
       </div>
       <div class="item date-view">
         <div class="title">{{ $t('fileLibrary.leftMenuBar.contentView.dateFiles') }}</div>
-        <div class="tree">2</div>
+        <div class="tree">
+          <TimeSort />
+        </div>
       </div>
       <div class="item search-view">
         <div class="title">{{ $t('fileLibrary.leftMenuBar.contentView.searchView') }}</div>
-        <div class="tree">2</div>
+        <div class="tree">
+          <SearchView />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import FileDialog from './FileDialog'
+import FileDialog from './FileDialog'
+import TimeSort from './TimeSort'
+import SearchView from './SearchView'
+
 export default {
   name: "MenuBar",
   components: {
-    // FileDialog
+    FileDialog,
+    TimeSort,
+    SearchView
   }
 }
 </script>
@@ -49,13 +58,14 @@ export default {
   border-bottom: solid 1px @borderColor;
 
   .content-view {
-    padding: 8px 11px 8px 16px;
+    padding: 0px 11px 0px 16px;
 
     > div .title {
       font-family: PingFangSC-Medium;
       font-size: 14px;
       color: #595959;
       line-height: 22px;
+      margin-top: 8px;
     }
 
     .item {
